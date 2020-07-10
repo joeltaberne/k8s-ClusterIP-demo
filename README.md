@@ -1,7 +1,7 @@
 # k8s-ClusterIP-demo
 Simple k8s project that shows which of the pods in a ClusterIP answers a request from the user.
 
-First step is elaborating a new Dockerfile based in nginx:alpine which will replace the index.html with the hostname (as this container will be replicated 5 times, the hostname will be the pod name):
+First step is elaborating a new Dockerfile based in nginx:alpine which will replace and write the container hostname inside the index.html file (as this container will be replicated 5 times, the hostname will be the pod name):
 
 ```
 FROM nginx:alpine
@@ -22,7 +22,7 @@ docker build .
 docker tag (IMAGE_ID) k8s-test
 ```
 
-First step is creating a kubernetes manifest (test.yaml) consisting of one deployment and one ClusterIP service:
+Next step is creating a kubernetes manifest (test.yaml) consisting of one deployment and one ClusterIP service:
 
 ```
 apiVersion: apps/v1
